@@ -25,6 +25,10 @@ public class Customer {
         setPurchases(purchases);
     }
 
+    public String getTotalPurchases() {
+        return "$" + getTotalSale();
+    }
+
     public int getId() {
         return id;
     }

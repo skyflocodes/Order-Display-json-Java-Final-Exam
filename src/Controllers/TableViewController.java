@@ -85,7 +85,7 @@ public class TableViewController implements Initializable {
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("firstName"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("lastName"));
         phoneColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("phoneNumber"));
-        totalPurchaseColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("purchases"));
+        totalPurchaseColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("totalPurchases"));
 
         tableView.getSelectionModel().selectedItemProperty().addListener(
                 (object,oldValue,newValue)->{
@@ -104,6 +104,7 @@ public class TableViewController implements Initializable {
                         imageView.setImage(null);
                     imageView.setImage(new Image(newValue.getImages()));
                 });
+
         loadAllCustomers();
     }
 }
