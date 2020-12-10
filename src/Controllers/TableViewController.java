@@ -86,6 +86,13 @@ public class TableViewController implements Initializable {
         phoneColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("phoneNumber"));
         totalPurchaseColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("purchases"));
 
+        tableView.getSelectionModel().selectedItemProperty().addListener(
+                (object,oldValue,newValue)->{
+                    if (oldValue != null)
+                    purchaseListView.getItems().removeAll(oldValue.getPurchases());
+                    purchaseListView.getItems().addAll(newValue.getPurchases());
+                }
+        );
         loadAllCustomers();
     }
 }
