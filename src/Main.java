@@ -16,7 +16,7 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("style/style.css").toExternalForm());
         stage.setScene(scene);
-        stage.setTitle("Cutomer List");
+        stage.setTitle("Customer List");
         stage.show();
     }
 }

@@ -1,16 +1,22 @@
-//Sky Florence 1109038 2020-12-10
+//Sky Florence 1109038 2020-12-10#3d3d3d
 package Controllers;
 
 import Models.Customer;
 import Models.Product;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
+import utils.JSONFileUtil;
 
-public class TableViewController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class TableViewController implements Initializable {
+
     @FXML
     private Label saleLabel;
 
@@ -62,6 +68,12 @@ public class TableViewController {
     @FXML
     private void loadAllCustomers()
     {
+        tableView.getItems().addAll(JSONFileUtil.getCustomers("src/customers.json"));
         System.out.println("called method loadAllCustomers");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadAllCustomers();
     }
 }

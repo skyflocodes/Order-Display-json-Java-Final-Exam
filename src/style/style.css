@@ -18,9 +18,10 @@
     -fx-border-color: #06296e;
     -fx-border-width: 3px;
 }
-
+/*
 .table-view{
     -fx-background-color: transparent;
+    -fx-text-fill: white;
 }
 
 .table-view .column-header-background{
@@ -42,6 +43,7 @@
 
 .table-row-cell{
     -fx-background-color: -fx-table-cell-border-color, #3d3d3d;
+    -fx-text-fill: white;
 }
 
 .table-view > .virtual-flow > .scroll-bar:vertical,
@@ -52,3 +54,4 @@
 .table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
     -fx-background-color: transparent;
 }
+*/
