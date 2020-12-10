@@ -17,7 +17,9 @@ import utils.JSONFileUtil;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class TableViewController implements Initializable {
 
@@ -54,33 +56,43 @@ public class TableViewController implements Initializable {
     @FXML
     private ListView<Product> purchaseListView;
 
+    private ArrayList<Customer> allCustomer;
+
     @FXML
     private ImageView imageView;
 
     @FXML
     private void top10Customers()
     {
-        System.out.println("called method top10Customers()");
+        purchaseListView.getItems().clear();
+
         rowsInTableLabel.setText(tableView.getItems().size() + "");
+        System.out.println("called method top10Customers()");
     }
 
     @FXML
     private void customersSavedOver5()
     {
-        System.out.println("called method customersSavedOver5()");
+        purchaseListView.getItems().clear();
+        List<Customer> filtered = allCustomer.stream()
+                .filter(customer -> customer.getSaved5() == true)
+                .collect(Collectors.toList());
+        tableView.getItems().addAll(filtered);
         rowsInTableLabel.setText(tableView.getItems().size() + "");
     }
 
     @FXML
     private void loadAllCustomers()
     {
-        tableView.getItems().addAll(JSONFileUtil.getCustomers("src/customers.json"));
-        rowsInTableLabel.setText(tableView.getItems().size() + "");
+        purchaseListView.getItems().clear();
+        tableView.getItems().addAll(allCustomer);
         System.out.println("called method loadAllCustomers");
+        rowsInTableLabel.setText(tableView.getItems().size() + "");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        allCustomer = JSONFileUtil.getCustomers("src/customers.json");
         idColumn.setCellValueFactory(new PropertyValueFactory<Customer,Integer>("Id"));
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("firstName"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("lastName"));

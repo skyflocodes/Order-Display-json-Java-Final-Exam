@@ -86,10 +86,11 @@ public class Customer {
     }
 
     public boolean getSaved5(){
-        boolean saved = false;
-        if (getTotalSaved() >= 5)
-            saved = true;
-        return saved;
+        if (getTotalSaved() >= 5) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
