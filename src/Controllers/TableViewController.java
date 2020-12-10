@@ -64,30 +64,25 @@ public class TableViewController implements Initializable {
     @FXML
     private void top10Customers()
     {
-        purchaseListView.getItems().clear();
-
-        rowsInTableLabel.setText(tableView.getItems().size() + "");
         System.out.println("called method top10Customers()");
     }
 
     @FXML
     private void customersSavedOver5()
     {
-        purchaseListView.getItems().clear();
-        List<Customer> filtered = allCustomer.stream()
-                .filter(customer -> customer.getSaved5() == true)
-                .collect(Collectors.toList());
-        tableView.getItems().addAll(filtered);
-        rowsInTableLabel.setText(tableView.getItems().size() + "");
+        System.out.println("called method customersSavedOver5()");
     }
 
     @FXML
     private void loadAllCustomers()
     {
+        int columnSize = 0;
         purchaseListView.getItems().clear();
+        tableView.getItems().clear();
         tableView.getItems().addAll(allCustomer);
         System.out.println("called method loadAllCustomers");
-        rowsInTableLabel.setText(tableView.getItems().size() + "");
+        columnSize = tableView.getItems().size();
+        rowsInTableLabel.setText(columnSize + "");
     }
 
     @Override
