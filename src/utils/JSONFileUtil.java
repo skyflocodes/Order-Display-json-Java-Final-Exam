@@ -34,4 +34,21 @@ public class JSONFileUtil {
         }
         return customers;
     }
+    
+    public static SearchResult getSearchResult(String jsonFileName){
+        ArrayList<Customer> customers = new ArrayList<>();
+        Gson gson = new Gson();
+        SearchResult searchResult = null;
+        try(
+                FileReader fileReader = new FileReader(jsonFileName);
+                JsonReader jsonReader = new JsonReader(fileReader);
+        )
+        {
+            searchResult = gson.fromJson(jsonReader,SearchResult.class);
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        return searchResult;
+    }
 }

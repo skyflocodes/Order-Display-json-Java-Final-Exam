@@ -3,16 +3,19 @@ package Controllers;
 
 import Models.Customer;
 import Models.Product;
+import Models.SearchResult;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import utils.JSONFileUtil;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class TableViewController implements Initializable {
@@ -57,23 +60,32 @@ public class TableViewController implements Initializable {
     private void top10Customers()
     {
         System.out.println("called method top10Customers()");
+        rowsInTableLabel.setText(tableView.getItems().size() + "");
     }
 
     @FXML
     private void customersSavedOver5()
     {
         System.out.println("called method customersSavedOver5()");
+        rowsInTableLabel.setText(tableView.getItems().size() + "");
     }
 
     @FXML
     private void loadAllCustomers()
     {
         tableView.getItems().addAll(JSONFileUtil.getCustomers("src/customers.json"));
+        rowsInTableLabel.setText(tableView.getItems().size() + "");
         System.out.println("called method loadAllCustomers");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        idColumn.setCellValueFactory(new PropertyValueFactory<Customer,Integer>("Id"));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("firstName"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("lastName"));
+        phoneColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("phoneNumber"));
+        totalPurchaseColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("purchases"));
+
         loadAllCustomers();
     }
 }

@@ -6,11 +6,8 @@ public class SearchResult {
     @SerializedName("Customers")
     private Customer[] customers;
 
-    private String totalResults;
-
-    public SearchResult(Customer[] customers, String totalResults) {
+    public SearchResult(Customer[] customers) {
         setCustomers(customers);
-        setTotalResults(totalResults);
     }
 
     public Customer[] getCustomers() {
@@ -22,10 +19,7 @@ public class SearchResult {
     }
 
     public String getTotalResults() {
-        return totalResults;
-    }
-
-    public void setTotalResults(String totalResults) {
-        this.totalResults = totalResults;
+        int results = getCustomers().length;
+        return results + "";
     }
 }
