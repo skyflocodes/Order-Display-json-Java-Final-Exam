@@ -1,0 +1,54 @@
+/*sets the css for the base of the app*/
+.root {
+    -fx-background-color: lightBlue;
+    -fx-text-fill: #3d3d3d;
+    -fx-font-size: 14;
+}
+
+.button{
+    -fx-background-color: lightBlue;
+    -fx-text-fill: #3d3d3d;
+    -fx-border-color: #06296e;
+    -fx-border-width: 3px;
+}
+
+.button:hover{
+    -fx-background-color: White;
+    -fx-text-fill: #3d3d3d;
+    -fx-border-color: #06296e;
+    -fx-border-width: 3px;
+}
+
+.table-view{
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: #3d3d3d;
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: white;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #3d3d3d;
+}
+
+.table-view > .virtual-flow > .scroll-bar:vertical,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track-background,
+.table-view > .virtual-flow > .scroll-bar:horizontal,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
+    -fx-background-color: transparent;
+}
