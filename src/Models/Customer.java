@@ -64,4 +64,28 @@ public class Customer {
     public void setPurchases(ArrayList<Product> purchases) {
         this.purchases = purchases;
     }
+
+    public double getTotalPrice(){
+        return purchases.stream()
+                .mapToDouble(Product::getRegularPrice)
+                .sum();
+    }
+
+    public double getTotalSale(){
+        return purchases.stream()
+                .mapToDouble(Product::getSalePrice)
+                .sum();
+    }
+
+    public double getTotalSaved(){
+        return getTotalPrice() - getTotalSale();
+    }
+
+    public boolean getSaved5(){
+        boolean saved = false;
+        if (getTotalSaved() >= 5)
+            saved = true;
+        return saved;
+    }
+
 }
